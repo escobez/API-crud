@@ -1,0 +1,25 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Filmes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="listaFilmes.length > 0">
+    <ion-item *ngFor="let filme of listaFilmes">
+      <ion-thumbnail slot="start">
+        <img [src]="filme.cartaz" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ filme.nome }}</h2>
+        <p>{{ filme.lancamento }} - {{ filme.duracao }}</p>
+        <ion-chip color="danger" *ngIf="filme.favorito">★ Favorito</ion-chip>
+      </ion-label>
+      <ion-button (click)="exibirFilme(filme)">Detalhes</ion-button>
+      <ion-button (click)="favoritarFilme(filme)" fill="clear">
+        {{ filme.favorito ? 'Desfavoritar' : 'Favoritar' }}
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
